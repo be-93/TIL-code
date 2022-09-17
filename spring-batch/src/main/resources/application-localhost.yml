@@ -9,6 +9,9 @@ spring:
     password: 1234
     driver-class-name: org.postgresql.Driver
 
+  batch:
+    job:
+      names: ${job.name:NONE}
 
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
