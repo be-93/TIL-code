@@ -1,4 +1,4 @@
-package com.cus.springbatch.domain;
+package com.cus.batch.example.user.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,13 +12,18 @@ import javax.persistence.Table;
 
 @Getter
 @Entity
-@Table(name = "user_master")
+@Table(name = "user_history")
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class UserHistory {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
   private String name;
   private int age;
+
+  public UserHistory(String name, int age) {
+    this.name = name;
+    this.age = age;
+  }
 }
