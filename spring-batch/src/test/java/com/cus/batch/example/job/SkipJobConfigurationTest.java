@@ -1,10 +1,10 @@
 package com.cus.batch.example.job;
 
 import com.cus.batch.TestBatchConfiguration;
-import com.cus.batch.example.user.domain.User;
-import com.cus.batch.example.user.domain.UserHistory;
-import com.cus.batch.example.user.domain.UserHistoryRepository;
-import com.cus.batch.example.user.domain.UserRepository;
+import com.cus.batch.example.domain.user.User;
+import com.cus.batch.example.domain.user.UserHistory;
+import com.cus.batch.example.domain.user.UserHistoryRepository;
+import com.cus.batch.example.domain.user.UserRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.batch.core.ExitStatus;
