@@ -1,12 +1,14 @@
 ---
-name: PR Template
-about: PR Basic Template
+name: Deep Dive
+about: Deep Dive Basic Template
 title: ''
-labels: ''
+labels: Deep-Dive
 assignees: be-93
 
 ---
 
-# Issue
+# 주제
 
-# close #(issue-number)
+# 방향성
+
+# 필수 파악
