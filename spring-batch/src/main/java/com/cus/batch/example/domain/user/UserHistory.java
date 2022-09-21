@@ -1,4 +1,4 @@
-package com.cus.batch.example.user.domain;
+package com.cus.batch.example.domain.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
