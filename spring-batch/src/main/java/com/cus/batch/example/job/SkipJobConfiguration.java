@@ -1,7 +1,7 @@
 package com.cus.batch.example.job;
 
-import com.cus.batch.example.user.domain.User;
-import com.cus.batch.example.user.domain.UserHistory;
+import com.cus.batch.example.domain.user.User;
+import com.cus.batch.example.domain.user.UserHistory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.Job;
