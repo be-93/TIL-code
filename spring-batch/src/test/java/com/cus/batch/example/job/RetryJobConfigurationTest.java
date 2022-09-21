@@ -2,6 +2,8 @@ package com.cus.batch.example.job;
 
 import com.cus.batch.TestBatchConfiguration;
 import com.cus.batch.example.user.domain.User;
+import com.cus.batch.example.user.domain.UserBackUp;
+import com.cus.batch.example.user.domain.UserBackUpRepository;
 import com.cus.batch.example.user.domain.UserHistory;
 import com.cus.batch.example.user.domain.UserHistoryRepository;
 import com.cus.batch.example.user.domain.UserRepository;
@@ -23,14 +25,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 @SpringBatchTest
-@SpringBootTest(classes = {SkipJobConfiguration.class, TestBatchConfiguration.class})
-class SkipJobConfigurationTest {
+@SpringBootTest(classes = {RetryJobConfiguration.class, TestBatchConfiguration.class})
+class RetryJobConfigurationTest {
+
   @Autowired
   private JobLauncherTestUtils jobLauncherTestUtils;
   @Autowired
   private UserRepository userRepository;
   @Autowired
   private UserHistoryRepository userHistoryRepository;
+  @Autowired
+  private UserBackUpRepository userBackUpRepository;
 
   @AfterEach
   void tearDown() {
@@ -39,7 +44,7 @@ class SkipJobConfigurationTest {
   }
 
   @Test
-  public void 스킵_테스트() throws Exception {
+  public void 재시도_테스트() throws Exception {
     //given
     for (int i = 0; i < 10; i++) {
       userRepository.save(User.builder()
@@ -63,10 +68,12 @@ class SkipJobConfigurationTest {
     //then
     JobExecution actual = jobExecution;
     List<UserHistory> histories = userHistoryRepository.findAll();
+    List<UserBackUp> backUps = userBackUpRepository.findAll();
 
     assertAll(
-        () -> assertThat(actual.getExitStatus().getExitCode()).isEqualTo(ExitStatus.COMPLETED.getExitCode()),
-        () -> assertThat(histories.size()).isEqualTo(9)
+        () -> assertThat(actual.getExitStatus().getExitCode()).isEqualTo(ExitStatus.FAILED.getExitCode()),
+        () -> assertThat(histories.size()).isEqualTo(3),
+        () -> assertThat(backUps).isEmpty()
     );
   }
 }
