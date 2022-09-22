@@ -2,7 +2,7 @@
 name: Study
 about: Study Basic Template
 title: ''
-labels: ''
+labels: Study
 assignees: be-93
 
 ---
