@@ -2,7 +2,7 @@
 name: Deep Dive
 about: Deep Dive Basic Template
 title: ''
-labels: ''
+labels: Deep Dive
 assignees: be-93
 
 ---
