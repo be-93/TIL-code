@@ -21,5 +21,8 @@ spring:
       hibernate:
         format_sql: false
 
+server:
+  shutdown: graceful
+
 logging.level:
   org.hibernate.SQL: debug
