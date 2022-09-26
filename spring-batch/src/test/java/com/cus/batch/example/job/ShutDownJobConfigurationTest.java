@@ -1,6 +1,7 @@
 package com.cus.batch.example.job;
 
 import com.cus.batch.TestBatchConfiguration;
+import com.cus.batch.example.listener.JobExecutionShutdownDefinition;
 import com.cus.batch.example.listener.JobGracefulShutdownListener;
 import org.junit.jupiter.api.Test;
 import org.springframework.batch.core.JobExecution;
@@ -14,7 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBatchTest
-@SpringBootTest(classes = {ShutDownJobConfiguration.class, TestBatchConfiguration.class, JobGracefulShutdownListener.class})
+@SpringBootTest(classes = {ShutDownJobConfiguration.class, TestBatchConfiguration.class, JobGracefulShutdownListener.class, JobExecutionShutdownDefinition.class})
 class ShutDownJobConfigurationTest {
   @Autowired
   private JobLauncherTestUtils jobLauncherTestUtils;
