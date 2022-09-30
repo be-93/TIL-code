@@ -1,1 +1,37 @@
+spring:
+  profiles:
+    active: local
 
+---
+# docker install
+# docker pull postgres
+# docker run --name querydsl -d -p 5433:5432 -e POSTGRES_PASSWORD="1234" postgres
+# docker exec -it querydsl /bin/bash
+# psql -U postgres
+# CREATE USER querydsl PASSWORD '1234' SUPERUSER;
+# CREATE DATABASE querydsl OWNER querydsl;
+
+spring:
+  config:
+    activate:
+      on-profile: local
+
+  datasource:
+    hikari:
+      jdbc-url: jdbc:postgresql://localhost:5433/querydsl
+      username: querydsl
+      password: 1234
+      driver-class-name: org.postgresql.Driver
+      minimum-idle: 10
+      maximum-pool-size: 50
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        format_sql: true
+
+logging.level:
+  org.hibernate.SQL: debug
