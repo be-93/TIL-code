@@ -1,0 +1,11 @@
+### 상품 조회
+GET http://localhost:8080/api/products
+
+### 상품 등록
+POST http://localhost:8080/api/products
+Content-Type: application/json
+
+{
+  "name": "사이다",
+  "price": 1500
+}
