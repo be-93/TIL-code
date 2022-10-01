@@ -1,14 +1,13 @@
 package com.cus.study.querydsl.example;
 
 import com.cus.study.querydsl.configuration.TestJPAQueryFactory;
-import com.cus.study.querydsl.domain.order.Order;
-import com.cus.study.querydsl.domain.order.QOrder;
-import com.cus.study.querydsl.domain.product.Product;
-import com.cus.study.querydsl.domain.product.ProductRepository;
 import com.cus.study.querydsl.domain.product.QProduct;
+import com.cus.study.querydsl.product.domain.Product;
+import com.cus.study.querydsl.product.domain.ProductRepository;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
 
@@ -19,6 +18,7 @@ import java.util.stream.IntStream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Import(TestJPAQueryFactory.class)
 public class SimpleTest {
 
@@ -43,4 +43,5 @@ public class SimpleTest {
     //then
     assertThat(products).isNotEmpty();
   }
+
 }

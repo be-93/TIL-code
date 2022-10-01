@@ -1,4 +1,4 @@
-package com.cus.study.querydsl.domain.product;
+package com.cus.study.querydsl.product.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

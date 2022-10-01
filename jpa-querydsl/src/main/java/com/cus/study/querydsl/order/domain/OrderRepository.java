@@ -1,4 +1,4 @@
-package com.cus.study.querydsl.domain.order;
+package com.cus.study.querydsl.order.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

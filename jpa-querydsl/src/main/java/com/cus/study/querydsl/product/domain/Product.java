@@ -1,4 +1,4 @@
-package com.cus.study.querydsl.domain.product;
+package com.cus.study.querydsl.product.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import java.math.BigDecimal;
 
 @Getter
@@ -18,8 +17,14 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Entity
 public class Product {
-  @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   private String name;
   private BigDecimal price;
+
+  public Product(String name, BigDecimal price) {
+    this.name = name;
+    this.price = price;
+  }
 }
