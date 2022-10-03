@@ -1,7 +1,7 @@
 package com.cus.study.querydsl.product.application;
 
-import com.cus.study.querydsl.domain.product.QProduct;
 import com.cus.study.querydsl.product.domain.ProductRepository;
+import com.cus.study.querydsl.product.domain.QProduct;
 import com.cus.study.querydsl.product.dto.ProductRequest;
 import com.cus.study.querydsl.product.dto.ProductResponse;
 import com.querydsl.jpa.impl.JPAQueryFactory;

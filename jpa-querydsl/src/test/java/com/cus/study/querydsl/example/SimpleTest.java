@@ -1,9 +1,9 @@
 package com.cus.study.querydsl.example;
 
 import com.cus.study.querydsl.configuration.TestJPAQueryFactory;
-import com.cus.study.querydsl.domain.product.QProduct;
 import com.cus.study.querydsl.product.domain.Product;
 import com.cus.study.querydsl.product.domain.ProductRepository;
+import com.cus.study.querydsl.product.domain.QProduct;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

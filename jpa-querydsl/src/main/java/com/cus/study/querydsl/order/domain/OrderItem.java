@@ -1,6 +1,6 @@
 package com.cus.study.querydsl.order.domain;
 
-import com.cus.study.querydsl.delivery.domain.Delivery;
+import com.cus.study.querydsl.menu.domain.Menu;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -8,42 +8,38 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "orders")
-public class Order {
+public class OrderItem {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  private String memo;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "order_id")
+  private Order order;
 
   @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "delivery_id")
-  private Delivery delivery;
+  @JoinColumn(name = "menu_id")
+  private Menu menu;
 
-  @OneToMany(cascade = CascadeType.ALL)
-  private List<OrderItem> orderItems = new ArrayList<>();
-
-  public void addOrderItem(OrderItem orderItem) {
-    orderItems.add(orderItem);
-    orderItem.changeOrder(this);
+  public void changeMenu(Menu menu) {
+    this.menu = menu;
   }
 
-  public void changeMemo(String memo) {
-    this.memo = memo;
+  public void changeOrder(Order order) {
+    this.order = order;
   }
+
 }
